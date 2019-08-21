@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  
+  <title>Hexo系列教程之一：hexo+github搭建独立博客 - WillXue&#39;s Blog</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="晚上少吃点？">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/png">
+  <meta name="keywords" content="hexo,教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo系列教程之一：hexo+github搭建独立博客">
+<meta property="og:url" content="http://willxue.com/blog/Hexo系列教程之一：hexo-github搭建独立博客-20160320/index.html">
+<meta property="og:site_name" content="WillXue&#39;s Blog">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://willxue.cn-bj.ufileos.com/hexo%2Bgithub.png">
+<meta property="og:image" content="http://willxue.cn-bj.ufileos.com/hexo11.png">
+<meta property="og:image" content="http://willxue.cn-bj.ufileos.com/hexo12.png">
+<meta property="og:image" content="http://willxue.cn-bj.ufileos.com/hexo13.png">
+<meta property="og:image" content="http://willxue.cn-bj.ufileos.com/hexo14.png">
+<meta property="og:image" content="http://willxue.cn-bj.ufileos.com/hexo15.png">
+<meta property="og:image" content="http://willxue.cn-bj.ufileos.com/hexo16.png">
+<meta property="og:image" content="http://willxue.cn-bj.ufileos.com/hexo17.png">
+<meta property="og:image" content="http://willxue.cn-bj.ufileos.com/hexo18.png">
+<meta property="og:image" content="http://willxue.cn-bj.ufileos.com/hexo19.png">
+<meta property="og:updated_time" content="2019-08-20T14:10:17.407Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo系列教程之一：hexo+github搭建独立博客">
+<meta name="twitter:image" content="http://willxue.cn-bj.ufileos.com/hexo%2Bgithub.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
+  <link rel="stylesheet" href="/css/style.css?v=1566350223128">
+</head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2019/01/13/5c3aec85a4343.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="willxue" class="mdui-btn mdui-btn-icon"><img src="http://willxue.ufile.ucloud.com.cn/logo.png"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="willxue">
+            <img src="http://willxue.ufile.ucloud.com.cn/logo.png" alt="willxue">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>13</div>
+        <div><span>标签</span>9</div>
+        <div><span>分类</span>5</div>
+    </div>
+    <ul class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/archives" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </ul>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">社交按钮</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://weibo.com/willxue0" target="_blank" mdui-tooltip="{content: 'WeiBo'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/xuezhw/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/go/">go</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">标签云</h3>
+    <div class="nexmoe-widget tagcloud">
+      <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 15px;">go</a> <a href="/tags/hello-world/" style="font-size: 10px;">hello world</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/tomcat/" style="font-size: 15px;">tomcat</a> <a href="/tags/域名/" style="font-size: 10px;">域名</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+    </div>
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2019 willxue
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+    <div class="nexmoe-post-cover"> 
+        
+            <img src="https://i.loli.net/2019/01/13/5c3aec85a4343.jpg">
+        
+        <h1>Hexo系列教程之一：hexo+github搭建独立博客</h1>
+    </div>
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2016年03月20日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.3k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 5 分钟</a>
+    
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/hexo/">hexo</a>
+    
+    
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/hexo/">hexo</a> <a class="nexmoefont icon-tag-fill -link" href="/tags/教程/">教程</a>
+    
+  </div>
+  <article>
+    <p><img src="http://willxue.cn-bj.ufileos.com/hexo%2Bgithub.png" alt="github+hexo"></p>
+<a id="more"></a>
+
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr>
+<p>引用一下<a href="http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html" target="_blank" rel="noopener">阮一峰</a>–喜欢写Blog的人，会经历三个阶段。</p>
+<blockquote>
+<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
+</blockquote>
+<blockquote>
+<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
+</blockquote>
+<blockquote>
+<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
+</blockquote>
+<p>对我这种不太喜欢写blog的人，没经历过第一二阶段，直接跳到了第三阶段，哈哈，也希望以后能多多坚持，记录人生（=^_^=）。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><hr>
+<p><strong>注意</strong> 本文主要针对<code>Windows</code>平台和<code>Hexo 3.x</code>。<code>Linux</code>和<code>Mac</code>用户可以参考<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="noopener">官方文档</a>。</p>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>Windows下请下载并安装 <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git</a>。</p>
+<blockquote>
+<p>作用：把本地的hexo代码提交到github上去。</p>
+</blockquote>
+<h2 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h2><p>点击<a href="https://nodejs.org/en" target="_blank" rel="noopener">Node.js</a>下载。</p>
+<blockquote>
+<p>作用：hexo运行环境，用来创建hexo博客框架。</p>
+</blockquote>
+<p><strong>以上两个软件安装很简单，按照步骤来就行了，就不一一赘述了。</strong></p>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>运行环境安装玩以后，下面就进入正题了。<br>安装前先介绍几个hexo常用的命令,#后面为注释。</p>
+<pre><code>hexo g   #完整命令为hexo generate,用于生成静态文件
+hexo s   #完整命令为hexo server,用于启动服务器，主要用来本地预览
+hexo d   #完整命令为hexo deploy,用于将本地文件发布到github上
+hexo n   #完整命令为hexo new,用于新建一篇文章
+hexo clean   #清除生成的文件</code></pre><p>安装很简单，在任意位置右键看到<code>Git Bash Here</code>。<br><img src="http://willxue.cn-bj.ufileos.com/hexo11.png" alt="git"><br>打开git命令窗口，输入</p>
+<pre><code>npm install -g hexo </code></pre><p>当然国内的网可能反应很慢如果长时间没回应的话，可以换成淘宝npm镜像。</p>
+<pre><code>npm config set registry  &quot;https://registry.npm.taobao.org&quot;</code></pre><p>可以参考<a href="http://www.tuicool.com/articles/UVR3qqA" target="_blank" rel="noopener">推酷</a>和<a href="http://yijiebuyi.com/blog/b12eac891cdc5f0dff127ae18dc386d4.html" target="_blank" rel="noopener">一介布衣</a>这篇文章。</p>
+<p>安装完成后，根据自己喜好建立目录（如F:\hexo），进入目录右键<code>Git Bash Here</code>，打开命令窗口输入：</p>
+<pre><code>hexo init</code></pre><p>Hexo 即会自动在目标文件夹建立网站所需要的所有文件。<br>安装依赖包</p>
+<pre><code>npm install</code></pre><p>新建完成后，指定文件夹的目录如下：</p>
+<pre><code>.
+├── _config.yml
+├── package.json
+├── scaffolds
+├── source
+|   ├── _drafts
+|   └── _posts
+└── themes</code></pre><p>下面可以简单的查看一下效果，输入命令：</p>
+<pre><code>hexo s</code></pre><p>然后用浏览器访问<code>http://localhost:4000</code>，应该能看到默认的效果了（自带主题landscape）。</p>
+<h2 id="部署到Github"><a href="#部署到Github" class="headerlink" title="部署到Github"></a>部署到Github</h2><p>本地环境搭建好以后，就该发布到互联网，让别人可以访问，我们选择github pages。</p>
+<h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><ol>
+<li>注册<a href="https://github.com/" target="_blank" rel="noopener">github</a>账号并登录进入个人中心。<br><img src="http://willxue.cn-bj.ufileos.com/hexo12.png" alt="github"></li>
+<li>点击Respositories，然后New,新建一个仓库，如下图，注意仓库名必须为 你的用户名.github.io，例如我的用户名<code>imwillxue</code>，仓库名为<code>imwillxue.github.io</code>。<br><img src="http://willxue.cn-bj.ufileos.com/hexo13.png" alt="new"></li>
+<li>过几分钟就可以访问了。</li>
+</ol>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>编辑全局配置文件<code>_config.yml</code>(在F:\hexo下)。部署时，把下面的<code>imwillxue</code>都换成你的账号名。</p>
+<pre><code>deploy: 
+  type: git
+  repository: git@github.com:imwillxue/imwillxue.github.io.git
+  branch: master</code></pre><p><strong>注：</strong>上面是SSH方式的配置，https方式要把url换成<code>https://github.com/imwillxue/imwillxue.github.io.git</code>。<br>如果你是第一次使用Github或者是已经使用过，但没有配置过SSH，则可能需要配置一下,方便以后push代码。</p>
+<p>在Git Bash输入以下指令（任意位置点击鼠标右键），检查是否已经存在了SSH keys。</p>
+<pre><code>ls -al ~/.ssh</code></pre><p>如果不存在就没有关系，如果存在的话，可以直接删除.ssh文件夹里面所有文件。输入以下指令（邮箱就是你注册Github时候的邮箱）</p>
+<pre><code>ssh-keygen -t rsa -C &quot;example@126.com&quot;</code></pre><p>回车，出现提示让你输入的时候直接回车就行了。</p>
+<p>之后找到用户目录下.ssh文件夹，打开<code>id_rsa.pub</code>文件，复制里面的内容。<br><img src="http://willxue.cn-bj.ufileos.com/hexo14.png" alt="ssh"></p>
+<p>打开github网页找到右上角<code>setting</code>，进去点SSH keys，新建一个SSH。<br><img src="http://willxue.cn-bj.ufileos.com/hexo15.png" alt="ssh"><br><img src="http://willxue.cn-bj.ufileos.com/hexo16.png" alt="ssh"><br><img src="http://willxue.cn-bj.ufileos.com/hexo17.png" alt="ssh"></p>
+<p>回到控制台输入测试命令。</p>
+<pre><code>ssh -T git@github.com</code></pre><p>之后会提示连接成功，第一次连可能会警告，输入yes就行了，然后提示连接成功。<br><img src="http://willxue.cn-bj.ufileos.com/hexo18.png" alt="ssh"></p>
+<p>配置好以后就可以push到github了，输入命令：</p>
+<pre><code>hexo g
+
+hexo d</code></pre><p>第一次<code>hexo d</code>可能会报错：<code>ERROR Deployer not found:git</code>，需要安装一下<code>hexo-deployer-git</code>这个插件：</p>
+<pre><code>npm install hexo-deployer-git --save</code></pre><p>安装好了继续执行<code>hexo d</code>部署命令，就可以访问了。我的是<code>imwillxue.github.io</code>。<br><strong>注：</strong>在hexo d之后会有个这个提示：<br><img src="http://willxue.cn-bj.ufileos.com/hexo19.png" alt></p>
+<p>需要输入注册邮箱和用户名</p>
+<pre><code>git config --global user.email &quot;example@126.com&quot;
+git config --global user.name &quot;imwillxue&quot;</code></pre><p>打开网站看一看吧。</p>
+<h3 id="发表文章"><a href="#发表文章" class="headerlink" title="发表文章"></a>发表文章</h3><ol>
+<li>输入命令新建一篇文章：</li>
+</ol>
+<pre><code>hexo n &quot;文章名字&quot;</code></pre><ol start="2">
+<li>打开F:\hexo\source_posts中新建的<code>文章名字.md</code>文件，我用的Notepad++。</li>
+</ol>
+<pre><code>title: 文章名字   #标题
+date: 2016-03-16 23:04:09   #发表日期
+categories: blog   #文章文类
+tags: [文章,随笔]   #文章标签
+---
+#这里是正文，用markdown写，你可以选择写一段显示在首页的简介后，加上&lt;!--more--&gt;，在&lt;!--more--&gt;之前的内容会显示在首页，之后的内容会被隐藏，当游客点击Read more才能看到。</code></pre><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://opiece.me/2015/04/09/hexo-guide/" target="_blank" rel="noopener">使用Hexo搭建个人博客(基于hexo3.0)</a><br><a href="http://www.zipperary.com/2013/05/28/hexo-guide-2/" target="_blank" rel="noopener">hexo系列教程：（二）搭建hexo博客</a></p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>没了，请看下期。</p>
+
+  </article>
+  
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>本文作者：</strong>willxue<br>
+<strong>本文链接：</strong><a href="http://willxue.com/blog/Hexo系列教程之一：hexo-github搭建独立博客-20160320/" title="http://willxue.com/blog/Hexo系列教程之一：hexo-github搭建独立博客-20160320/" target="_blank" rel="noopener">http://willxue.com/blog/Hexo系列教程之一：hexo-github搭建独立博客-20160320/</a><br>
+
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+</div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'd38a60773e3796f9c5b5',
+        clientSecret: '35cfe5f5e858a0e248bd072495458804dcc60935',
+        id: window.location.pathname,
+        repo: 'xuezhw.github.io',
+        owner: 'xuezhw',
+        admin: 'xuezhw'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+ 
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-for-websites@1.4.9/SmoothScroll.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/js/app.js?v=1566350223141"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
+
+  
+
+
+
+
+
+</body>
+
+</html>

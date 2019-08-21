@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  
+  <title>java.lang.OutOfMemoryError: PermGen space - WillXue&#39;s Blog</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="晚上少吃点？">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/png">
+  <meta name="description" content="在vps上部署多个应用时，报了 java.lang.OutOfMemoryError: PermGen space 错误，由于没有深入了解过jvm，只能在网上搜到了一些解决办法。">
+<meta name="keywords" content="java,tomcat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java.lang.OutOfMemoryError: PermGen space">
+<meta property="og:url" content="http://willxue.com/blog/java-lang-OutOfMemoryError-PermGen-space-20160406/index.html">
+<meta property="og:site_name" content="WillXue&#39;s Blog">
+<meta property="og:description" content="在vps上部署多个应用时，报了 java.lang.OutOfMemoryError: PermGen space 错误，由于没有深入了解过jvm，只能在网上搜到了一些解决办法。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://7xrz9n.com1.z0.glb.clouddn.com/java-tomcat.png">
+<meta property="og:updated_time" content="2019-08-20T13:32:51.813Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java.lang.OutOfMemoryError: PermGen space">
+<meta name="twitter:description" content="在vps上部署多个应用时，报了 java.lang.OutOfMemoryError: PermGen space 错误，由于没有深入了解过jvm，只能在网上搜到了一些解决办法。">
+<meta name="twitter:image" content="http://7xrz9n.com1.z0.glb.clouddn.com/java-tomcat.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
+  <link rel="stylesheet" href="/css/style.css?v=1566350223033">
+</head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2019/01/13/5c3aec85a4343.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="willxue" class="mdui-btn mdui-btn-icon"><img src="http://willxue.ufile.ucloud.com.cn/logo.png"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="willxue">
+            <img src="http://willxue.ufile.ucloud.com.cn/logo.png" alt="willxue">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>13</div>
+        <div><span>标签</span>9</div>
+        <div><span>分类</span>5</div>
+    </div>
+    <ul class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/archives" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </ul>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">社交按钮</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://weibo.com/willxue0" target="_blank" mdui-tooltip="{content: 'WeiBo'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/xuezhw/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/go/">go</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">标签云</h3>
+    <div class="nexmoe-widget tagcloud">
+      <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 15px;">go</a> <a href="/tags/hello-world/" style="font-size: 10px;">hello world</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/tomcat/" style="font-size: 15px;">tomcat</a> <a href="/tags/域名/" style="font-size: 10px;">域名</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+    </div>
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2019 willxue
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+    <div class="nexmoe-post-cover"> 
+        
+            <img src="https://i.loli.net/2019/01/13/5c3aec85a4343.jpg">
+        
+        <h1>java.lang.OutOfMemoryError: PermGen space</h1>
+    </div>
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2016年04月06日</a>
+    <a><i class="nexmoefont icon-areachart"></i>577 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 2 分钟</a>
+    
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/java/">java</a>
+    
+    
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/java/">java</a> <a class="nexmoefont icon-tag-fill -link" href="/tags/tomcat/">tomcat</a>
+    
+  </div>
+  <article>
+    <blockquote>
+<p>在vps上部署多个应用时，报了 <code>java.lang.OutOfMemoryError: PermGen space</code> 错误，由于没有深入了解过jvm，只能在网上搜到了一些解决办法。</p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><hr>
+<p>java.lang.OutOfMemoryError: PermGen space<br>PermGen space的全称是Permanent Generation space,是指内存的永久保存区域, 这块内存主要是被JVM存放Class和Meta信息的,Class在被Loader时就会被放到PermGen space中, 它和存放类实例(Instance)的Heap区域不同,GC(Garbage Collection)不会在主程序运行期对 PermGen space进行清理，所以如果你的应用中有很多CLASS的话,就很可能出现PermGen space错误, 这种错误常见在web服务器对JSP进行pre compile的时候。如果你的WEB APP下都用了大量的第三方jar, 其大小超过了jvm默认的大小(4M)那么就会产生此错误信息了。</p>
+<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><hr>
+<p>这里以windows下tomcat环境为例，其它WEB服务器如jboss,weblogic等是同一个道理。</p>
+<ol>
+<li>MyEclipse/eclipse 中报 PermGen space。<br>window–&gt;preferences–&gt;Myclipse–&gt;Servers–&gt;Tomcat–&gt;JDK,设置jdk参数。<br>```</li>
+</ol>
+<p>-Xms512m -Xmx1024m -XX:PermSize=128M -XX:MaxPermSize=256m</p>
+<pre><code>    **参数介绍：**</code></pre><p>-Xms512m  #JVM初始分配的堆内存<br>-Xmx1024m  #JVM最大允许分配的堆内存，按需分配<br>-XX:PermSize=128M  #JVM初始分配的非堆内存<br>-XX:MaxPermSize=256M  #JVM最大允许分配的非堆内存，按需分配</p>
+<pre><code>2. 手动设置MaxPermSize大小，如果是linux系统，修改`TOMCAT_HOME/bin/catalina.sh`，如果是windows系统，修改`TOMCAT_HOME/bin/catalina.bat`，在 </code></pre><p>echo “Using CATALINA_BASE: $CATALINA_BASE” </p>
+<pre><code>    上面加入以下行：</code></pre><p>JAVA_OPTS=”-Xms512m -Xmx1024m -XX:PermSize=128M -XX:MaxPermSize=256m”<br>```<br>    <strong>建议：将相同的第三方jar文件移置到tomcat/lib目录下，这样可以达到减少jar 文档重复占用内存的目的。</strong></p>
+<ol start="3">
+<li>在windows中，如果以服务方式启动，这个一般在服务器上用的比较多，修改注册表的数据。<br>找到 <code>HKEY_LOCAL_MACHINE/SOFTWARE/Apache Software Foundation/Procrun 2.0/Tomcat7/Parameters/Java</code> 或<code>HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Apache Software Foundation/Procrun 2.0/Tomcat7/Parameters/Java</code>，修改JvmMs和JvmMx的值。或者直接修改Options的参数，加入 <code>-Xms512m -Xmx1024m -XX:PermSize=128M -XX:MaxPermSize=256m</code><br><img src="http://7xrz9n.com1.z0.glb.clouddn.com/java-tomcat.png" alt><br>之前还真不知道windows服务启动和startup.bat启动的区别。 windows服务器启动是在注册表中加载参数，startup.bat启动是在catalina.bat加载参数。</li>
+</ol>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><hr>
+<p><a href="http://www.cnblogs.com/mingforyou/archive/2012/03/03/2378143.html" target="_blank" rel="noopener">http://www.cnblogs.com/mingforyou/archive/2012/03/03/2378143.html</a><br><a href="http://www.cnblogs.com/xwdreamer/archive/2011/11/21/2296930.html" target="_blank" rel="noopener">http://www.cnblogs.com/xwdreamer/archive/2011/11/21/2296930.html</a></p>
+
+  </article>
+  
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>本文作者：</strong>willxue<br>
+<strong>本文链接：</strong><a href="http://willxue.com/blog/java-lang-OutOfMemoryError-PermGen-space-20160406/" title="http://willxue.com/blog/java-lang-OutOfMemoryError-PermGen-space-20160406/" target="_blank" rel="noopener">http://willxue.com/blog/java-lang-OutOfMemoryError-PermGen-space-20160406/</a><br>
+
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+</div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'd38a60773e3796f9c5b5',
+        clientSecret: '35cfe5f5e858a0e248bd072495458804dcc60935',
+        id: window.location.pathname,
+        repo: 'xuezhw.github.io',
+        owner: 'xuezhw',
+        admin: 'xuezhw'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+ 
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-for-websites@1.4.9/SmoothScroll.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/js/app.js?v=1566350223042"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
+
+  
+
+
+
+
+
+</body>
+
+</html>

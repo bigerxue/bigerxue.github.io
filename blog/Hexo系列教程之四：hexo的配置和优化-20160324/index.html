@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  
+  <title>Hexo系列教程之四：hexo的配置和优化 - WillXue&#39;s Blog</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="晚上少吃点？">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/png">
+  <meta name="keywords" content="hexo,教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo系列教程之四：hexo的配置和优化">
+<meta property="og:url" content="http://willxue.com/blog/Hexo系列教程之四：hexo的配置和优化-20160324/index.html">
+<meta property="og:site_name" content="WillXue&#39;s Blog">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://willxue.cn-bj.ufileos.com/hexo41.png">
+<meta property="og:image" content="http://willxue.cn-bj.ufileos.com/hexo42.png">
+<meta property="og:image" content="http://willxue.cn-bj.ufileos.com/hexo43.png">
+<meta property="og:image" content="http://willxue.cn-bj.ufileos.com/hexo44.png">
+<meta property="og:image" content="http://willxue.cn-bj.ufileos.com/hexo45.png">
+<meta property="og:image" content="http://willxue.cn-bj.ufileos.com/hexo46.png">
+<meta property="og:updated_time" content="2019-08-20T14:13:26.405Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo系列教程之四：hexo的配置和优化">
+<meta name="twitter:image" content="http://willxue.cn-bj.ufileos.com/hexo41.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
+  <link rel="stylesheet" href="/css/style.css?v=1566350223094">
+</head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2019/01/13/5c3aec85a4343.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="willxue" class="mdui-btn mdui-btn-icon"><img src="http://willxue.ufile.ucloud.com.cn/logo.png"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="willxue">
+            <img src="http://willxue.ufile.ucloud.com.cn/logo.png" alt="willxue">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>13</div>
+        <div><span>标签</span>9</div>
+        <div><span>分类</span>5</div>
+    </div>
+    <ul class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/archives" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </ul>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">社交按钮</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://weibo.com/willxue0" target="_blank" mdui-tooltip="{content: 'WeiBo'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/xuezhw/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/go/">go</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">标签云</h3>
+    <div class="nexmoe-widget tagcloud">
+      <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 15px;">go</a> <a href="/tags/hello-world/" style="font-size: 10px;">hello world</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/tomcat/" style="font-size: 15px;">tomcat</a> <a href="/tags/域名/" style="font-size: 10px;">域名</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+    </div>
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2019 willxue
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+    <div class="nexmoe-post-cover"> 
+        
+            <img src="https://i.loli.net/2019/01/13/5c3aec85a4343.jpg">
+        
+        <h1>Hexo系列教程之四：hexo的配置和优化</h1>
+    </div>
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2016年03月24日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.4k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 7 分钟</a>
+    
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/hexo/">hexo</a>
+    
+    
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/hexo/">hexo</a> <a class="nexmoefont icon-tag-fill -link" href="/tags/教程/">教程</a>
+    
+  </div>
+  <article>
+    <p><img src="http://willxue.cn-bj.ufileos.com/hexo41.png" alt="willxue"></p>
+<a id="more"></a>
+
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr>
+<p>前面写了点hexo主题next的一些简单配置，怎奈本人实在太懒，言语表达能力欠缺，写的文章质量太低，态度也有点问题，希望自己能慢慢坚持，努力改正，争取每天都写点。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><hr>
+<blockquote>
+<p>下面进入正题，现在很多主题已经把很多功能都合并进去，所以操作起来相对简单一些了，以下介绍包含但不限于<code>next</code>主题。</p>
+</blockquote>
+<h2 id="多说评论"><a href="#多说评论" class="headerlink" title="多说评论"></a>多说评论</h2><p>给站点加入多说评论功能，基本所有主题都集成了，说一下基本操作，以及一些个性化设置。</p>
+<h3 id="添加多说评论"><a href="#添加多说评论" class="headerlink" title="添加多说评论"></a>添加多说评论</h3><ol>
+<li><p>打开<a href="http://duoshuo.com/" target="_blank" rel="noopener">多说</a>首页,点 <strong>我要安装</strong> ，登陆多说（微博或qq快捷登录），创建站点。<br><img src="http://willxue.cn-bj.ufileos.com/hexo42.png" alt="willxue"></p>
+</li>
+<li><p>按下图进行输入创建评论站点。<br><img src="http://willxue.cn-bj.ufileos.com/hexo43.png" alt="willxue"></p>
+</li>
+<li><p>创建完以后进入管理后台，在左侧菜单栏里找到工具，右侧代码里看到<code>short_name</code>，也就是刚才输入的多说域名。<br><img src="http://willxue.cn-bj.ufileos.com/hexo44.png" alt="willxue"></p>
+</li>
+<li><p>打开 <code>主题配置文件</code>，找到 <code>duoshuo_shortname</code>，写到后面。不同主题可能名字不一样，操作都是一样的。</p>
+<pre><code>duoshuo_shortname: imwillxue</code></pre></li>
+</ol>
+<h3 id="修改评论框CSS样式"><a href="#修改评论框CSS样式" class="headerlink" title="修改评论框CSS样式"></a>修改评论框CSS样式</h3><p>CSS好的可以自己写，详见<a href="http://dev.duoshuo.com/docs/4ff1cfd0397309552c000017" target="_blank" rel="noopener">多说文档</a>。当然google一堆，我的就是google的，前端太烂。下面是我的代码，具体样式评论查看。</p>
+<pre><code>/*Head Start*/
+#ds-thread #ds-reset ul.ds-comments-tabs li.ds-tab a.ds-current {
+    border: 0px;
+    color: #6D6D6B;
+    text-shadow: none;
+    background: #F3F3F3;
+}
+
+#ds-thread #ds-reset .ds-highlight {
+    font-family: Microsoft YaHei, &quot;Helvetica Neue&quot;, Helvetica, Arial, Sans-serif;
+    ;font-size: 100%;
+    color: #6D6D6B !important;
+}
+
+#ds-thread #ds-reset ul.ds-comments-tabs li.ds-tab a.ds-current:hover {
+    color: #696a52;
+    background: #F2F2F2;
+}
+
+#ds-thread #ds-reset a.ds-highlight:hover {
+    color: #696a52 !important;
+}
+
+#ds-thread {
+    padding-left: 15px;
+}
+
+#ds-thread #ds-reset li.ds-post,#ds-thread #ds-reset #ds-hot-posts {
+    overflow: visible;
+}
+
+#ds-thread #ds-reset .ds-post-self {
+    padding: 10px 0 10px 10px;
+}
+
+#ds-thread #ds-reset li.ds-post,#ds-thread #ds-reset .ds-post-self {
+    border: 0 !important;
+}
+
+#ds-reset .ds-avatar, #ds-thread #ds-reset ul.ds-children .ds-avatar {
+    top: 15px;
+    left: -20px;
+    padding: 5px;
+    width: 36px;
+    height: 36px;
+    box-shadow: -1px 0 1px rgba(0,0,0,.15) inset;
+    border-radius: 46px;
+    background: #FAFAFA;
+}
+
+#ds-thread .ds-avatar a {
+    display: inline-block;
+    padding: 1px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b9baa6;
+    border-radius: 50%;
+    background-color: #fff !important;
+}
+
+#ds-thread .ds-avatar a:hover {
+}
+
+#ds-thread .ds-avatar &gt; img {
+    margin: 2px 0 0 2px;
+}
+
+#ds-thread #ds-reset .ds-replybox {
+    box-shadow: none;
+}
+
+#ds-thread #ds-reset ul.ds-children .ds-replybox.ds-inline-replybox a.ds-avatar,
+#ds-reset .ds-replybox.ds-inline-replybox a.ds-avatar {
+    left: 0;
+    top: 0;
+    padding: 0;
+    width: 32px !important;
+    height: 32px !important;
+    background: none;
+    box-shadow: none;
+}
+
+#ds-reset .ds-replybox.ds-inline-replybox a.ds-avatar img {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50%;
+}
+
+#ds-reset .ds-replybox a.ds-avatar,
+#ds-reset .ds-replybox .ds-avatar img {
+    padding: 0;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 5px;
+}
+
+#ds-reset .ds-avatar img {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 32px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.22);
+    -webkit-transition: .8s all ease-in-out;
+    -moz-transition: .4s all ease-in-out;
+    -o-transition: .4s all ease-in-out;
+    -ms-transition: .4s all ease-in-out;
+    transition: .4s all ease-in-out;
+}
+
+.ds-post-self:hover .ds-avatar img {
+    -webkit-transform: rotateX(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
+#ds-thread #ds-reset .ds-comment-body {
+    -webkit-transition-delay: initial;
+    -webkit-transition-duration: 0.4s;
+    -webkit-transition-property: all;
+    -webkit-transition-timing-function: initial;
+    background: #F7F7F7;
+    padding: 15px 15px 15px 47px;
+    border-radius: 5px;
+    box-shadow: #B8B9B9 0 1px 3px;
+    border: white 1px solid;
+}
+
+#ds-thread #ds-reset ul.ds-children .ds-comment-body {
+    padding-left: 15px;
+}
+
+#ds-thread #ds-reset .ds-comment-body p {
+    color: #787968;
+}
+
+#ds-thread #ds-reset .ds-comments {
+    border-bottom: 0px;
+}
+
+#ds-thread #ds-reset .ds-powered-by {
+    display: none;
+}
+
+#ds-thread #ds-reset .ds-comments a.ds-user-name {
+    font-weight: normal;
+    color: #3D3D3D !important;
+}
+
+#ds-thread #ds-reset .ds-comments a.ds-user-name:hover {
+    color: #D32 !important;
+}
+
+#ds-thread #ds-reset #ds-bubble {
+    display: none !important;
+}
+
+#ds-thread #ds-reset #ds-hot-posts {
+    border: 0;
+}
+
+#ds-reset #ds-hot-posts .ds-gradient-bg {
+    background: none;
+}
+
+#ds-thread #ds-reset .ds-comment-body:hover {
+    background-color: #F1F1F1;
+    -webkit-transition-delay: initial;
+    -webkit-transition-duration: 0.4s;
+    -webkit-transition-property: all;
+    -webkit-transition-timing-function: initial;
+}
+/*Head End*/</code></pre><p>打开多说管理后台，把上面的代码复制进去。<br><img src="http://willxue.cn-bj.ufileos.com/hexo45.png" alt="willxue"></p>
+<h3 id="显示UA及博主"><a href="#显示UA及博主" class="headerlink" title="显示UA及博主"></a>显示UA及博主</h3><p>显示ua功能，next主题已经集成了，只需要在配置文件设置一下就行了，效果看下图。<br><img src="http://willxue.cn-bj.ufileos.com/hexo46.png" alt="willxue"></p>
+<pre><code>duoshuo_info:
+  ua_enable: true  #是否显示ua
+  admin_enable: true #是否显示博主
+  user_id: 6262178932196377345  #多说用户id
+  admin_nickname: 神 #博主昵称自定义</code></pre><p><strong>注： 多说id就是打开多说个人中心<a href="http://duoshuo.com/settings/" target="_blank" rel="noopener">http://duoshuo.com/settings/</a>，点击你的用户名地址会出现一串数字就是多说id。</strong></p>
+<h4 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h4><p>对于很多没有集成这个功能的主题，可以参考一下文章或插件。<br>多说UA插件 - <a href="http://gerald.top/code/duoshuo-ua" target="_blank" rel="noopener">http://gerald.top/code/duoshuo-ua</a><br>ua-parser-js - <a href="https://github.com/faisalman/ua-parser-js" target="_blank" rel="noopener">https://github.com/faisalman/ua-parser-js</a><br>另外，还有本地化embed.js的，有兴趣的可以google一下。</p>
+<h2 id="RSS和sitemap"><a href="#RSS和sitemap" class="headerlink" title="RSS和sitemap"></a>RSS和sitemap</h2><ol>
+<li>安装RSS和sitemap插件<pre><code>npm install hexo-generator-feed --save
+npm install hexo-generator-sitemap --save</code></pre></li>
+<li>开启RSS和sitemap功能，编辑站点配置文件 <code>hexo/_config.yml</code><pre><code>feed: 
+type: atom  #feed 类型 
+path: atom.xml  #rss 路径 
+limit: 20  #在 rss 中最多生成的文章数(0显示所有)</code></pre></li>
+</ol>
+<p>NexT 中 RSS 有三个设置选项，满足特定的使用场景。 更改 <code>主题配置文件</code>，设定 <code>rss</code> 字段的值：</p>
+<ul>
+<li>false：禁用 RSS，不在页面上显示 RSS 连接。</li>
+<li>留空：使用 Hexo 生成的 Feed 链接。 </li>
+<li>具体的链接地址：适用于已经烧制过 Feed 的情形。</li>
+</ul>
+<p>我们这里留空就行了。</p>
+<p><strong>将生成出来的sitemap.xml文件提交给搜索引擎，后面介绍。</strong></p>
+<h2 id="腾讯公益404页面"><a href="#腾讯公益404页面" class="headerlink" title="腾讯公益404页面"></a>腾讯公益404页面</h2><p>在 <code>hexo/source</code> 文件夹下新建404.html，推荐使用腾讯公益404。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;404&lt;/title&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;http://www.qq.com/404/search_children.js&quot; 
+        charset=&quot;utf-8&quot; homePageUrl=&quot;http://willxue.top&quot; homePageName=&quot;我的博客&quot;&gt;&lt;/script&gt;
+    &lt;/body&gt;
+
+&lt;/html&gt;</code></pre><h1 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h1><hr>
+<ul>
+<li>修改配置文件时注意 <code>YAML</code> 语法，参数冒号: 后一定要留空格</li>
+<li>中文乱码请修改文件编码格式为UTF-8</li>
+<li>GitHub同步慢或者失败请使用翻墙代理加速</li>
+</ul>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><hr>
+<p>不总结了，且看下回分解。</p>
+
+  </article>
+  
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>本文作者：</strong>willxue<br>
+<strong>本文链接：</strong><a href="http://willxue.com/blog/Hexo系列教程之四：hexo的配置和优化-20160324/" title="http://willxue.com/blog/Hexo系列教程之四：hexo的配置和优化-20160324/" target="_blank" rel="noopener">http://willxue.com/blog/Hexo系列教程之四：hexo的配置和优化-20160324/</a><br>
+
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+</div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'd38a60773e3796f9c5b5',
+        clientSecret: '35cfe5f5e858a0e248bd072495458804dcc60935',
+        id: window.location.pathname,
+        repo: 'xuezhw.github.io',
+        owner: 'xuezhw',
+        admin: 'xuezhw'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+ 
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-for-websites@1.4.9/SmoothScroll.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/js/app.js?v=1566350223103"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
+
+  
+
+
+
+
+
+</body>
+
+</html>

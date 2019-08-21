@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  
+  <title>go语言学习（一）net/http包客户端实例练习 - WillXue&#39;s Blog</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="晚上少吃点？">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/png">
+  <meta name="keywords" content="go">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go语言学习（一）net&#x2F;http包客户端实例练习">
+<meta property="og:url" content="http://willxue.com/blog/golang-learn-01-20161130/index.html">
+<meta property="og:site_name" content="WillXue&#39;s Blog">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://willxue.ufile.ucloud.com.cn/golang1.png">
+<meta property="og:updated_time" content="2019-08-20T13:32:51.532Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="go语言学习（一）net&#x2F;http包客户端实例练习">
+<meta name="twitter:image" content="http://willxue.ufile.ucloud.com.cn/golang1.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
+  <link rel="stylesheet" href="/css/style.css?v=1566350222978">
+</head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2019/01/13/5c3aec85a4343.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="willxue" class="mdui-btn mdui-btn-icon"><img src="http://willxue.ufile.ucloud.com.cn/logo.png"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="willxue">
+            <img src="http://willxue.ufile.ucloud.com.cn/logo.png" alt="willxue">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>13</div>
+        <div><span>标签</span>9</div>
+        <div><span>分类</span>5</div>
+    </div>
+    <ul class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/archives" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </ul>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">社交按钮</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://weibo.com/willxue0" target="_blank" mdui-tooltip="{content: 'WeiBo'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/xuezhw/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/go/">go</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">标签云</h3>
+    <div class="nexmoe-widget tagcloud">
+      <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 15px;">go</a> <a href="/tags/hello-world/" style="font-size: 10px;">hello world</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/tomcat/" style="font-size: 15px;">tomcat</a> <a href="/tags/域名/" style="font-size: 10px;">域名</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+    </div>
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2019 willxue
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+    <div class="nexmoe-post-cover"> 
+        
+            <img src="https://i.loli.net/2019/01/13/5c3aec85a4343.jpg">
+        
+        <h1>go语言学习（一）net/http包客户端实例练习</h1>
+    </div>
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2016年11月30日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.5k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 8 分钟</a>
+    
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/go/">go</a>
+    
+    
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/go/">go</a>
+    
+  </div>
+  <article>
+    <p><img src="http://willxue.ufile.ucloud.com.cn/golang1.png" alt="界面"></p>
+<a id="more"></a>
+<blockquote>
+<p>因为我是学Java的，主要做web开发，所以看了点go的基础知识后，就试着把以前的demo用go实现以下，而且go web开发非常简便只要几行代码，就能实现简单http服务器，今天主要写一下用net/http包模拟客户端发送请求实现百度推送（实时）。</p>
+</blockquote>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><pre><code>.
+├── static
+|   ├── css
+|   └── layer
+├── views
+|   └── index.html
+└── main.go</code></pre><h2 id="main-go"><a href="#main-go" class="headerlink" title="main.go"></a>main.go</h2><pre><code>package main
+
+import (
+    &quot;fmt&quot;
+    &quot;html/template&quot;
+    &quot;io/ioutil&quot;
+    &quot;log&quot;
+    &quot;net/http&quot;
+    &quot;net/url&quot;
+    &quot;strings&quot;
+)
+
+func main() {
+    http.HandleFunc(&quot;/&quot;, index)
+    http.HandleFunc(&quot;/send&quot;, bdSend)
+    //处理静态文件
+    http.Handle(&quot;/static/&quot;, http.StripPrefix(&quot;/static/&quot;, http.FileServer(http.Dir(&quot;static&quot;))))
+    err := http.ListenAndServe(&quot;:80&quot;, nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+}
+
+//首页
+func index(w http.ResponseWriter, r *http.Request) {
+    if r.Method == &quot;GET&quot; {
+        t, err := template.ParseFiles(&quot;views/index.html&quot;)
+        if err != nil {
+            log.Fatal(err)
+        }
+        t.Execute(w, nil)
+    }
+}
+
+//推送
+func bdSend(w http.ResponseWriter, r *http.Request) {
+    if r.Method == &quot;POST&quot; {
+        request(w, r)
+    }
+}
+
+//模拟http客户端post发送请求
+func request(w http.ResponseWriter, r *http.Request) {
+    //先解析form
+    err := r.ParseForm()
+
+    if err != nil {
+        log.Fatal(err)
+    }
+    //请求地址
+    var apiURL string
+    switch r.Form[&quot;oper&quot;][0] {
+    case &quot;post&quot;:
+        apiURL = &quot;http://data.zz.baidu.com/urls&quot;
+    case &quot;update&quot;:
+        apiURL = &quot;http://data.zz.baidu.com/update&quot;
+    case &quot;del&quot;:
+        apiURL = &quot;http://data.zz.baidu.com/del&quot;
+    }
+
+    //初始化参数
+    param := url.Values{}
+
+    //配置请求参数,方法内部已处理urlencode问题,中文参数可以直接传参
+    param.Set(&quot;site&quot;, r.Form[&quot;site&quot;][0])
+    param.Set(&quot;token&quot;, r.Form[&quot;token&quot;][0])
+
+    var URL *url.URL
+    URL, err = url.Parse(apiURL)
+    if err != nil {
+        fmt.Printf(&quot;解析url错误:\r\n%v&quot;, err)
+    }
+    //如果参数中有中文参数,这个方法会进行URLEncode
+    URL.RawQuery = param.Encode()
+    client := &amp;http.Client{}
+    req, _ := http.NewRequest(&quot;POST&quot;, URL.String(), strings.NewReader(r.Form[&quot;sendURL&quot;][0]))
+
+    req.Header.Set(&quot;Content-Type&quot;, &quot;application/x-www-form-urlencoded&quot;)
+    //req.Header.Set(&quot;User-Agent&quot;, &quot;curl/7.12.1&quot;)
+    //req.Header.Set(&quot;Host&quot;, &quot;data.zz.baidu.com&quot;)
+
+    //发送请求
+    resp, err := client.Do(req)
+    //注意关闭resp.Body
+    defer resp.Body.Close()
+    data, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        fmt.Printf(&quot;请求失败,错误信息:\r\n%v&quot;, err)
+    } else {
+        //var returns map[string]interface{}
+        //json.Unmarshal(data, &amp;returns)
+        //data, err = json.Marshal(returns)
+        //将返回的json数据返给客户端浏览器
+        fmt.Fprintln(w, string(data))
+    }
+}</code></pre><h2 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h2><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+        &lt;!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --&gt;
+        &lt;title&gt;百度主动推送(实时)&lt;/title&gt;
+        &lt;LINK rel=&quot;Bookmark&quot; href=&quot;/static/favicon.ico&quot;&gt;
+        &lt;LINK rel=&quot;Shortcut Icon&quot; href=&quot;/static/favicon.ico&quot; /&gt;
+        &lt;!-- Bootstrap --&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css&quot;&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/css/style.css&quot;&gt;
+        &lt;!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --&gt;
+        &lt;!-- WARNING: Respond.js doesn&#39;t work if you view the page via file:// --&gt;
+        &lt;!--[if lt IE 9]&gt;
+            &lt;script src=&quot;//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js&quot;&gt;&lt;/script&gt;
+            &lt;script src=&quot;//cdn.bootcss.com/respond.js/1.4.2/respond.min.js&quot;&gt;&lt;/script&gt;
+        &lt;![endif]--&gt;
+    &lt;/head&gt;
+    &lt;body class=&quot;bg-body&quot;&gt;
+        &lt;div class=&quot;container text-center bg&quot;&gt;
+            &lt;h1&gt;百度主动推送（实时）&lt;/h1&gt;
+            &lt;form class=&quot;form-horizontal&quot; id=&quot;form&quot; &gt;
+                &lt;div class=&quot;form-group  form-group-lg&quot;&gt;
+                    &lt;div class=&quot;col-sm-8 col-sm-offset-2&quot;&gt;
+                        &lt;select class=&quot;form-control&quot; id=&quot;oper&quot; name=&quot;oper&quot;&gt;
+                            &lt;option value=&quot;post&quot;&gt;推送数据&lt;/option&gt;
+                            &lt;option value=&quot;update&quot;&gt;更新数据&lt;/option&gt;
+                            &lt;option value=&quot;del&quot;&gt;删除数据&lt;/option&gt;
+                        &lt;/select&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;form-group  form-group-lg&quot;&gt;
+                    &lt;div class=&quot;col-sm-8 col-sm-offset-2&quot;&gt;
+                        &lt;input type=&quot;tel&quot; class=&quot;form-control&quot; id=&quot;site&quot; name=&quot;site&quot; placeholder=&quot;要推送内容的网站，例如：www.example.com&quot; required &gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;form-group  form-group-lg&quot;&gt;
+                    &lt;div class=&quot;col-sm-8 col-sm-offset-2&quot;&gt;
+                        &lt;input type=&quot;tel&quot; class=&quot;form-control&quot; id=&quot;token&quot; name=&quot;token&quot; placeholder=&quot;百度站长平台秘钥，例如：ZD4V6EK2QNpzwill&quot; required &gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;form-group  form-group-lg&quot;&gt;
+                    &lt;div class=&quot;col-sm-8 col-sm-offset-2&quot;&gt;
+                        &lt;textarea class=&quot;form-control&quot; name=&quot;sendURL&quot; rows=&quot;8&quot; placeholder=&quot;网址之间要换行，例如：
+http://www.example/abc.hml
+http://www.example/bcd.html&quot; &gt;&lt;/textarea&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;form-group  form-group-lg&quot;&gt;
+                    &lt;div class=&quot;col-sm-8 col-sm-offset-2&quot;&gt;
+                        &lt;button type=&quot;button&quot; class=&quot;btn btn-success btn-lg btn-block&quot; onclick=&quot;ajaxSub()&quot;&gt;推送&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;h3&gt;&amp;copy; 2016 powered by &lt;a href=&quot;http://willxue.top&quot; target=&quot;_blank&quot;&gt;willxue&lt;/a&gt;&lt;/h3&gt;
+            &lt;/form&gt;
+
+            &lt;!-- jQuery (necessary for Bootstrap&#39;s JavaScript plugins) --&gt;
+            &lt;script src=&quot;//cdn.bootcss.com/jquery/1.11.3/jquery.min.js&quot;&gt;&lt;/script&gt;
+            &lt;!-- Include all compiled plugins (below), or include individual files as needed --&gt;
+            &lt;script src=&quot;//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+            &lt;script src=&quot;/static/layer/layer.js&quot;&gt;&lt;/script&gt;
+            &lt;script type=&quot;text/javascript&quot;&gt;
+                function ajaxSub(){
+                    $.post(&quot;/send&quot;, $(&quot;#form&quot;).serialize(), function(result){
+                        if (result.indexOf(&quot;Exception&quot;)&gt;0) {
+                            layer.alert(&quot;请确认站点和token是否匹配&quot;,{title: &quot;错误&quot;,icon:2});
+                        } else {
+                            var data = JSON.parse(result);
+                            if (result.indexOf(&quot;success&quot;)&gt;0) {
+                                layer.alert(&quot;成功推送了：&quot;+data.success+&quot; 个&lt;br/&gt;今天还能推送：&quot;+data.remain+&quot; 个&lt;br/&gt;不是本站而未处理的url列表： &quot;+data.not_same_site+&quot;&lt;br/&gt;不合法的url：&quot;+data.not_valid,{icon:1});
+                            } else{
+                                layer.alert(&quot;推送失败了，错误码：&quot;+data.error+&quot;&lt;br/&gt;错误描述：&quot;+data.message,{title: &quot;错误&quot;,icon:2});
+                            }
+                        }
+                    });
+                }
+            &lt;/script&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre><h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>在线demo部署在daocloud <a href="http://gobaidu.daoapp.io/" target="_blank" rel="noopener">http://gobaidu.daoapp.io/</a></p>
+
+  </article>
+  
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>本文作者：</strong>willxue<br>
+<strong>本文链接：</strong><a href="http://willxue.com/blog/golang-learn-01-20161130/" title="http://willxue.com/blog/golang-learn-01-20161130/" target="_blank" rel="noopener">http://willxue.com/blog/golang-learn-01-20161130/</a><br>
+
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+</div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'd38a60773e3796f9c5b5',
+        clientSecret: '35cfe5f5e858a0e248bd072495458804dcc60935',
+        id: window.location.pathname,
+        repo: 'xuezhw.github.io',
+        owner: 'xuezhw',
+        admin: 'xuezhw'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+ 
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-for-websites@1.4.9/SmoothScroll.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/js/app.js?v=1566350222994"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
+
+  
+
+
+
+
+
+</body>
+
+</html>

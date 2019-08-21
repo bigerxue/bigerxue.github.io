@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  
+  <title>Hexo系列教程之三：next主题的配置和优化 - WillXue&#39;s Blog</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="晚上少吃点？">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/png">
+  <meta name="description" content="前言 前面介绍了怎么用hexo搭建博客，今天就谢谢主题的配置和优化。因为对hexo默认的主题不是很满意，对于追逐个性的我当然不甘于此，于是开启了折腾之路。对于hexo主题的选择纯凭个人喜好，这一点前面我也有提到，具体可以参考我的博文-Hexo系列教程之零。我现在的主题是yilia，已经配置好了，为了写这篇文章，我准备尝试一下next主题。">
+<meta name="keywords" content="hexo,教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo系列教程之三：next主题的配置和优化">
+<meta property="og:url" content="http://willxue.com/blog/Hexo系列教程之三：next主题的配置和优化-20160322/index.html">
+<meta property="og:site_name" content="WillXue&#39;s Blog">
+<meta property="og:description" content="前言 前面介绍了怎么用hexo搭建博客，今天就谢谢主题的配置和优化。因为对hexo默认的主题不是很满意，对于追逐个性的我当然不甘于此，于是开启了折腾之路。对于hexo主题的选择纯凭个人喜好，这一点前面我也有提到，具体可以参考我的博文-Hexo系列教程之零。我现在的主题是yilia，已经配置好了，为了写这篇文章，我准备尝试一下next主题。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://willxue.cn-bj.ufileos.com/hexo31.png">
+<meta property="og:image" content="http://willxue.cn-bj.ufileos.com/hexo32.png">
+<meta property="og:updated_time" content="2019-08-20T14:13:57.947Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo系列教程之三：next主题的配置和优化">
+<meta name="twitter:description" content="前言 前面介绍了怎么用hexo搭建博客，今天就谢谢主题的配置和优化。因为对hexo默认的主题不是很满意，对于追逐个性的我当然不甘于此，于是开启了折腾之路。对于hexo主题的选择纯凭个人喜好，这一点前面我也有提到，具体可以参考我的博文-Hexo系列教程之零。我现在的主题是yilia，已经配置好了，为了写这篇文章，我准备尝试一下next主题。">
+<meta name="twitter:image" content="http://willxue.cn-bj.ufileos.com/hexo31.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
+  <link rel="stylesheet" href="/css/style.css?v=1566350223107">
+</head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2019/01/13/5c3aec85a4343.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="willxue" class="mdui-btn mdui-btn-icon"><img src="http://willxue.ufile.ucloud.com.cn/logo.png"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="willxue">
+            <img src="http://willxue.ufile.ucloud.com.cn/logo.png" alt="willxue">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>13</div>
+        <div><span>标签</span>9</div>
+        <div><span>分类</span>5</div>
+    </div>
+    <ul class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/archives" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </ul>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">社交按钮</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://weibo.com/willxue0" target="_blank" mdui-tooltip="{content: 'WeiBo'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/xuezhw/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/go/">go</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">标签云</h3>
+    <div class="nexmoe-widget tagcloud">
+      <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 15px;">go</a> <a href="/tags/hello-world/" style="font-size: 10px;">hello world</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/tomcat/" style="font-size: 15px;">tomcat</a> <a href="/tags/域名/" style="font-size: 10px;">域名</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+    </div>
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2019 willxue
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+    <div class="nexmoe-post-cover"> 
+        
+            <img src="https://i.loli.net/2019/01/13/5c3aec85a4343.jpg">
+        
+        <h1>Hexo系列教程之三：next主题的配置和优化</h1>
+    </div>
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2016年03月22日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.9k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 9 分钟</a>
+    
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/hexo/">hexo</a>
+    
+    
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/hexo/">hexo</a> <a class="nexmoefont icon-tag-fill -link" href="/tags/教程/">教程</a>
+    
+  </div>
+  <article>
+    <p><img src="http://willxue.cn-bj.ufileos.com/hexo31.png" alt="next"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr>
+<p>前面介绍了怎么用hexo搭建博客，今天就谢谢主题的配置和优化。<br>因为对hexo默认的主题不是很满意，对于追逐个性的我当然不甘于此，于是开启了折腾之路。<br>对于hexo主题的选择纯凭个人喜好，这一点前面我也有提到，具体可以参考我的博文-<a href="http://willxue.top/blog/Hexo系列教程之零：知识准备20160319/" target="_blank" rel="noopener">Hexo系列教程之零</a>。我现在的主题是<code>yilia</code>，已经配置好了，为了写这篇文章，我准备尝试一下<code>next</code>主题。</p>
+<a id="more"></a>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><hr>
+<blockquote>
+<p>在 Hexo 中有两份主要的配置文件，其名称都是 <code>_config.yml</code>。 其中，一份位于站点根目录下，主要包含 Hexo 本身的配置；另一份位于主题目录下，这份配置有主题作者提供，主要用于配置主题相关的选项。<br>为了描述方便，在以下说明中，将前者称为 <code>站点配置文件</code>， 后者称为 <code>主题配置文件</code>。</p>
+</blockquote>
+<h2 id="安装-NexT"><a href="#安装-NexT" class="headerlink" title="安装 NexT"></a>安装 NexT</h2><p>具体安装非常简单，你可以直接下载将文件拷贝到hexo下themes目录里，也可以在hexo目录下右键git bash通过命令：</p>
+<pre><code>git clone https://github.com/iissnan/hexo-theme-next themes/next</code></pre><p>next主题会自动下载到themes目录下。</p>
+<h2 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h2><p>与所有 Hexo 主题启用的模式一样。 当 <code>克隆/下载</code> 完成后，打开 <code>站点配置文件</code>， 找到 <code>theme</code> 字段，并将其值更改为 <code>next</code> 。</p>
+<pre><code>theme: next</code></pre><p>然后可以验证一下，打开本地服务：</p>
+<pre><code>hexo s</code></pre><p>浏览器输入 <code>http://localhost:4000</code> 。</p>
+<blockquote>
+<p>当你看到站点的外观与下图所示类似时即说明你已成功安装 NexT 主题。这是 NexT 默认的 Scheme —— Muse。</p>
+</blockquote>
+<p><img src="http://willxue.cn-bj.ufileos.com/hexo32.png" alt="next"></p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>首先我们看看 <code>站点配置文件</code> 的配置 <code>F:\hexo\_config.yml</code> 。</p>
+<pre><code># Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+# Site 网站
+title: 为学   #网站标题
+subtitle: 天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。   #网站副标题
+description: 天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。   #网站描述
+author: willxue   #您的名字
+language: zh-CN   #网站使用的语言
+timezone:           #网站时区。Hexo 默认使用您电脑的时区
+
+# URL 网址
+## 如果您的网站存放在子目录中，例如 http://yoursite.com/blog，则请将您的 url 设为 http://yoursite.com/blog 并把 root 设为 /blog/。
+url: http://willxue.top
+permalink: :year/:month/:day/:title/    #生成文件名字的格式我改成blog/:title:year:month:day/
+permalink_defaults:
+
+# Directory 目录配置
+source_dir: source   #源文件夹，这个文件夹用来存放内容。
+public_dir: public   #公共文件夹，这个文件夹用于存放生成的站点文件。
+tag_dir: tags   #标签文件夹
+archive_dir: archives   #归档文件夹
+category_dir: categories   #分类文件夹
+code_dir: downloads/code    #nclude code 文件夹
+i18n_dir: :lang   #国际化（i18n）文件夹
+skip_render:   #跳过指定文件的渲染，您可使用 glob 表达式来匹配路径。
+
+# Writing 文章
+new_post_name: :title.md   # 新建文章默认文件名
+default_layout: post   # 默认布局
+titlecase: false   # Transform title into titlecase
+external_link: true   # 在新标签中打开一个外部链接，默认为true
+filename_case: 0   #转换文件名，1代表小写；2代表大写；默认为0，意思就是创建文章的时候，是否自动帮你转换文件名，默认就行，意义不大。
+render_drafts: false   #是否渲染_drafts目录下的文章，默认为false
+post_asset_folder: false   #启动 Asset 文件夹
+relative_link: false   #把链接改为与根目录的相对位址，默认false
+future: true   #显示未来的文章，默认false
+highlight:   #代码块的设置 
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace:
+
+# Category &amp; Tag   分类和标签的设置
+default_category: uncategorized   #默认分类
+category_map:   #分类别名
+tag_map:   #标签别名
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+
+# Pagination 分页
+## Set per_page to 0 to disable pagination
+per_page: 10   #每页显示的文章量 (0 = 关闭分页功能)
+pagination_dir: page   #分页目录
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: next
+
+feed:
+  type: atom       #feed 类型 (atom/rss2)
+  path: atom.xml   #rss 路径
+  limit: 20        #在 rss 中最多生成的文章数(0显示所有)
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy: 
+type: git 
+  repository: https://github.com/imwillxue/imwillxue.github.com.git 
+  branch: master</code></pre><p>上面有注释，看完也基本没什么问题了，这些基本上不用怎么改，个性化主要还是要修改主题的配置文件 <code>F:\hexo\themes\next\_config.yml</code>。</p>
+<pre><code># ---------------------------------------------------------------
+# Site Information Settings
+# ---------------------------------------------------------------
+
+# Place your favicon.ico to /source directory.
+favicon: /favicon.ico   #站标  可以放在hexo文件夹下的/source里
+
+# Set default keywords (Use a comma to separate)
+keywords: &quot;为学,willxue,willxue.top&quot;  #网站关键字
+
+# Set rss to false to disable feed link.
+# Leave rss as empty to use site&#39;s feed link.
+# Set rss to specific value if you have burned your feed already.
+rss:  #rss这里不设置 引文站点配置文件已经配置了 需要安装插件
+
+# Specify the date when the site was setup
+since: 1990  #网站时间 从xx开始 类似 1990-2016
+
+
+# ---------------------------------------------------------------
+# Menu Settings
+# ---------------------------------------------------------------
+
+# When running hexo in a subdirectory (e.g. domain.tld/blog)
+# Remove leading slashes ( &quot;/archives&quot; -&gt; &quot;archives&quot; )
+menu: #菜单路径设置 如果hexo在二级目录放置要去掉/
+  home: /
+  archives: /archives #归档
+  tags: /tags #标签
+  categories: /categories  #分类
+  about: /about #关于我
+  commonweal: /404.html  #公益404
+
+
+# Enable/Disable menu icons.
+# Icon Mapping:
+#   Map a menu item to a specific FontAwesome icon name.
+#   Key is the name of menu item and value is the name of FontAwsome icon.
+#   When an question mask icon presenting up means that the item has no mapping icon.
+menu_icons:  #icon图标
+  enable: true
+  # Icon Mapping.
+  home: home
+  about: user
+  categories: th
+  tags: tags
+  archives: archive
+  commonweal: heartbeat
+
+
+
+
+# ---------------------------------------------------------------
+# Scheme Settings
+# ---------------------------------------------------------------
+
+# Schemes  #next的三个scheme
+#scheme: Muse
+#scheme: Mist
+scheme: Pisces
+
+
+
+# ---------------------------------------------------------------
+# Sidebar Settings
+# ---------------------------------------------------------------
+
+
+# Social links   #社交链接
+social:
+  GitHub: 
+  Weibo:
+  Others:
+
+# Social Icons  #社交的图标
+social_icons:
+  enable: true
+  # Icon Mappings
+  GitHub: github
+  Twitter: twitter
+  Weibo: weibo
+
+
+# Sidebar Avatar
+# in theme directory(source/images): /images/avatar.jpg
+# in site  directory(source/uploads): /uploads/avatar.jpg
+# default : /images/default_avatar.jpg
+avatar: http://willxue.cn-bj.ufileos.com/logo.png #头像
+
+
+# TOC in the Sidebar  #文章自动显示目录
+toc:
+  enable: true
+
+  # Automatically add list number to toc.  #目录是否自动显示数字序号
+  number: false
+
+
+# Creative Commons 4.0 International License.
+# http://creativecommons.org/  #自由协议
+# Available: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero
+#creative_commons: by-nc-sa
+#creative_commons:
+
+sidebar:
+  # Sidebar Position, available value: left | right
+  position: left
+  #position: right
+
+  # Sidebar Display, available value:
+  #  - post    expand on posts automatically. Default.
+  #  - always  expand for all pages automatically
+  #  - hide    expand only when click on the sidebar toggle icon.
+  #  - remove  Totally remove sidebar including sidebar toggle icon.
+  display: post
+  #display: always
+  #display: hide
+  #display: remove
+
+
+
+# ---------------------------------------------------------------
+# Misc Theme Settings
+# ---------------------------------------------------------------
+
+# Custom Logo.
+# !!Only available for Default Scheme currently.
+# Options:
+#   enabled: [true/false] - Replace with specific image
+#   image: url-of-image   - Images&#39;s url
+custom_logo:
+  enabled: false
+  image:
+
+
+# Code Highlight theme
+# Available value:
+#    normal | night | night eighties | night blue | night bright
+# https://github.com/chriskempson/tomorrow-theme
+highlight_theme: night
+
+# Automatically scroll page to section which is under &lt;!-- more --&gt; mark.
+scroll_to_more: true
+
+# Automatically Excerpt
+auto_excerpt:
+  enable: false
+  length: 150
+
+# Use Lato font
+use_font_lato: true
+
+
+
+# ---------------------------------------------------------------
+# Third Party Services Settings
+# ---------------------------------------------------------------
+
+# MathJax Support
+mathjax:
+
+
+# Swiftype Search API Key
+#swiftype_key:
+
+# Baidu Analytics ID
+#baidu_analytics:
+
+# Duoshuo ShortName
+duoshuo_shortname: imwillxue
+
+# Disqus
+#disqus_shortname:
+
+# Baidu Share
+# Available value:
+#    button | slide
+#baidushare:
+##  type: button
+
+# Share
+#jiathis:
+#add_this_id:
+
+# Share
+duoshuo_share: true
+
+# Google Webmaster tools verification setting
+# See: https://www.google.com/webmasters/
+#google_site_verification:
+
+
+# Google Analytics
+#google_analytics:
+
+# CNZZ count
+#cnzz_siteid:
+
+
+# Make duoshuo show UA
+# user_id must NOT be null when admin_enable is true!
+# you can visit http://dev.duoshuo.com get duoshuo user id.
+duoshuo_info:
+  ua_enable: true
+  admin_enable: true
+  user_id: 6262178932196377345
+  admin_nickname: 神
+
+
+# Facebook SDK Support.
+# https://github.com/iissnan/hexo-theme-next/pull/410
+facebook_sdk:
+  enable: false
+  app_id:       #&lt;app_id&gt;
+  fb_admin:     #&lt;user_id&gt;
+  like_button:  #true
+  webmaster:    #true
+
+
+# Show number of visitors to each article.
+# You can visit https://leancloud.cn get AppID and AppKey.
+leancloud_visitors:
+  enable: true
+  app_id: QImiFijLSOHYufsazlBVlwLg-gzGzoHsz
+  app_key: AMcYaNHy9Y5OdH42k0d4uSED
+
+
+# Tencent analytics ID
+# tencent_analytics:
+
+# Enable baidu push so that the blog will push the url to baidu automatically which is very helpful for SEO
+baidu_push: true
+
+## 文章末尾是否显示打赏按钮
+donate: 
+  enable: true
+  text: Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！
+  alipay: 
+  wechat: 
+
+
+#! ---------------------------------------------------------------
+#! DO NOT EDIT THE FOLLOWING SETTINGS
+#! UNLESS YOU KNOW WHAT YOU ARE DOING
+#! ---------------------------------------------------------------
+
+# Motion
+use_motion: true
+
+# Fancybox
+fancybox: true
+
+# Static files
+vendors: vendors
+css: css
+js: js
+images: images
+
+# Theme version
+version: 0.5.0</code></pre><p>具体的配置可以参考<a href="http://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="noopener">官方文档</a>，写的很详细。</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>懒癌又犯了，本来想写一些详细的配置，以后再说吧。</p>
+
+  </article>
+  
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>本文作者：</strong>willxue<br>
+<strong>本文链接：</strong><a href="http://willxue.com/blog/Hexo系列教程之三：next主题的配置和优化-20160322/" title="http://willxue.com/blog/Hexo系列教程之三：next主题的配置和优化-20160322/" target="_blank" rel="noopener">http://willxue.com/blog/Hexo系列教程之三：next主题的配置和优化-20160322/</a><br>
+
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+</div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'd38a60773e3796f9c5b5',
+        clientSecret: '35cfe5f5e858a0e248bd072495458804dcc60935',
+        id: window.location.pathname,
+        repo: 'xuezhw.github.io',
+        owner: 'xuezhw',
+        admin: 'xuezhw'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+ 
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-for-websites@1.4.9/SmoothScroll.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/js/app.js?v=1566350223114"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
+
+  
+
+
+
+
+
+</body>
+
+</html>
